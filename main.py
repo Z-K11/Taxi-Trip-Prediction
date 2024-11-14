@@ -23,3 +23,5 @@ gc.collect()
 # is used to trigger manual garbage collection which involves clearing up unused objects and space hence freeing up memory
 print("There are " + str(len(cleanData)) + " observations in the dataset.")
 print("There are " + str(len(cleanData.columns)) + " variables in the dataset.")
+plt.hist(cleanData.tip_amount.values,16,histtype="bar",facecolor='g')
+plt.savefig("Visual_Representation.png")
