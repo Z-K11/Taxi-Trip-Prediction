@@ -40,3 +40,9 @@ cleanData['dropff_hour']=(cleanData['tpep_dropoff_datetime']).dt.hour
 cleanData['pickup_day']=(cleanData['tpep_pickup_datetime']).dt.weekday
 cleanData['dropoff_day']=(cleanData['tpep_dropoff_datetime']).dt.weekday
 # the above code converts pick_up_datetime to by extracting the day as integer monday = 0 tuesday = 1
+cleanData['trip_time']=(cleanData['tpep_dropoff_datetime']-cleanData['tpep_pickup_datetime']).dt.total_seconds
+# .dt.total_seconds converts a time duration from a time delta object into a float representing the total number of seconds
+# Idealy we would want to use the whole data set for this project 
+# But if you run into memory issues you can use the first 200000 rows by uncommenting the below two lines
+# reduce_data_set = 200000
+# cleanData = cleanData.head(reduce_data_set)
