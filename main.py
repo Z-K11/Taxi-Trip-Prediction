@@ -32,5 +32,8 @@ print("Maximum amount is ", np.max(cleanData.tip_amount.values))
 print("90% of the trips have a tip amount less or equal than :",np.percentile(cleanData.tip_amount.values,90))
 cleanData['tpep_pickup_datetime'] = pd.to_datetime(cleanData['tpep_pickup_datetime'])
 # converts the data into pandas date_time object
-cleanData["tpep_pickup_datetime"] = pd.to_datetime(cleanData['tpep_pickup_datetime'])
-print(cleanData.columns)
+cleanData["tpep_dropoff_datetime"] = pd.to_datetime(cleanData['tpep_dropoff_datetime'])
+#print(cleanData.columns)
+cleanData['pickup_hour']=(cleanData['tpep_pickup_datetime']).dt.hour
+cleanData['dropff_hour']=(cleanData['tpep_dropoff_datetime']).dt.hour
+# the above code gives us pick up hour and drop off hour from date time column 
