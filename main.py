@@ -23,9 +23,9 @@ del data
 # frees the memory
 gc.collect()
 # is used to trigger manual garbage collection which involves clearing up unused objects and space hence freeing up memory
-print("There are " + str(len(cleanData)) + " observations in the dataset.")
-print("There are " + str(len(cleanData.columns)) + " variables in the dataset.")
-plt.hist(cleanData.tip_amount.values,16,histtype="bar",facecolor='g')
+#print("There are " + str(len(cleanData)) + " observations in the dataset.")
+#print("There are " + str(len(cleanData.columns)) + " variables in the dataset.")
+#plt.hist(cleanData.tip_amount.values,16,histtype="bar",facecolor='g')
 #plt.savefig("Visual_Representation.png")
 print("Minimum amount is ", np.min(cleanData.tip_amount.values))
 print("Maximum amount is ", np.max(cleanData.tip_amount.values))
@@ -33,3 +33,4 @@ print("90% of the trips have a tip amount less or equal than :",np.percentile(cl
 cleanData['tpep_pickup_datetime'] = pd.to_datetime(cleanData['tpep_pickup_datetime'])
 # converts the data into pandas date_time object
 cleanData["tpep_pickup_datetime"] = pd.to_datetime(cleanData['tpep_pickup_datetime'])
+print(cleanData.columns)
