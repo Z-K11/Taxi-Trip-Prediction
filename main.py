@@ -36,4 +36,7 @@ cleanData["tpep_dropoff_datetime"] = pd.to_datetime(cleanData['tpep_dropoff_date
 #print(cleanData.columns)
 cleanData['pickup_hour']=(cleanData['tpep_pickup_datetime']).dt.hour
 cleanData['dropff_hour']=(cleanData['tpep_dropoff_datetime']).dt.hour
-# the above code gives us pick up hour and drop off hour from date time column 
+# the above code gives us pick up hour and drop off hour from date time column .dt.hour extract the hour(0-23_ from each timestamp in the column)
+cleanData['pickup_day']=(cleanData['tpep_pickup_datetime']).dt.weekday
+cleanData['dropoff_day']=(cleanData['tpep_dropoff_datetime']).dt.weekday
+# the above code converts pick_up_datetime to by extracting the day as integer monday = 0 tuesdat = 1
