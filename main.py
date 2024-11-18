@@ -61,3 +61,4 @@ y = proc_data[['tip_amount']].values.astype('float32')
 # droping tip_amount from the feature matrix
 proc_data=proc_data.drop(['tip_amount'],axis=1)
 X = proc_data.values
+X = normalize(X,axis=1,norm=11,copy=False)
