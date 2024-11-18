@@ -35,7 +35,7 @@ cleanData['tpep_pickup_datetime'] = pd.to_datetime(cleanData['tpep_pickup_dateti
 cleanData["tpep_dropoff_datetime"] = pd.to_datetime(cleanData['tpep_dropoff_datetime'])
 #print(cleanData.columns)
 cleanData['pickup_hour']=(cleanData['tpep_pickup_datetime']).dt.hour
-cleanData['dropff_hour']=(cleanData['tpep_dropoff_datetime']).dt.hour
+cleanData['dropoff_hour']=(cleanData['tpep_dropoff_datetime']).dt.hour
 # the above code gives us pick up hour and drop off hour from date time column .dt.hour extract the hour(0-23_ from each timestamp in the column)
 cleanData['pickup_day']=(cleanData['tpep_pickup_datetime']).dt.weekday
 cleanData['dropoff_day']=(cleanData['tpep_dropoff_datetime']).dt.weekday
@@ -46,3 +46,13 @@ cleanData['trip_time']=(cleanData['tpep_dropoff_datetime']-cleanData['tpep_picku
 # But if you run into memory issues you can use the first 200000 rows by uncommenting the below two lines
 # reduce_data_set = 200000
 # cleanData = cleanData.head(reduce_data_set)
+cleanData = cleanData.drop(['tpep_pickup_datetime','tpep_dropoff_datetime'],axis =1 )
+# this code will remove the pickup and dropoff time from the data set and restore the remaining data set into the assigned variable 
+# some features are categorical, we need to encode them
+# to encode them we use one-hot encoding from the Pandas package
+get_dummy_col = ["VendorID","RatecodeID","store_and_fwd_flag","PULocationID", "DOLocationID","payment_type", "pickup_hour", "dropoff_hour", "pickup_day", "dropoff_day"]
+proc_data = pd.get_dummies(cleanData,columns=get_dummy_col)
+# release memory occupied by clean_data as we do not need it anymore
+# we are dealing with a large dataset, thus we need to make sure we do not run out of memory
+del cleanData
+gc.collect()
