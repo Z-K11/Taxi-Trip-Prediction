@@ -56,3 +56,8 @@ proc_data = pd.get_dummies(cleanData,columns=get_dummy_col)
 # we are dealing with a large dataset, thus we need to make sure we do not run out of memory
 del cleanData
 gc.collect()
+# Extracting the label from the data frame called tip_amount
+y = proc_data[['tip_amount']].values.astype('float32')
+# droping tip_amount from the feature matrix
+proc_data=proc_data.drop(['tip_amount'],axis=1)
+X = proc_data.values
