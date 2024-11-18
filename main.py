@@ -62,3 +62,51 @@ y = proc_data[['tip_amount']].values.astype('float32')
 proc_data=proc_data.drop(['tip_amount'],axis=1)
 X = proc_data.values
 X = normalize(X,axis=1,norm=11,copy=False)
+print('X.shape=', X.shape, 'y.shape=', y.shape)
+# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+# print('X_train.shape=', X_train.shape, 'Y_train.shape=', y_train.shape)
+# print('X_test.shape=', X_test.shape, 'Y_test.shape=', y_test.shape)
+# import the Decision Tree Regression Model from scikit-learn
+#from sklearn.tree import DecisionTreeRegressor
+
+# for reproducible output across multiple function calls, set random_state to a given integer value
+#sklearn_dt = DecisionTreeRegressor(max_depth=8, random_state=35)
+
+# train a Decision Tree Regressor using scikit-learn
+#t0 = time.time()
+#sklearn_dt.fit(X_train, y_train)
+#sklearn_time = time.time()-t0
+#print("[Scikit-Learn] Training time (s):  {0:.5f}".format(sklearn_time))
+# import the Decision Tree Regressor Model from Snap ML
+#from snapml import DecisionTreeRegressor
+
+# in contrast to sklearn's Decision Tree, Snap ML offers multi-threaded CPU/GPU training 
+# to use the GPU, one needs to set the use_gpu parameter to True
+# snapml_dt = DecisionTreeRegressor(max_depth=4, random_state=45, use_gpu=True)
+
+# to set the number of CPU threads used at training time, one needs to set the n_jobs parameter
+# for reproducible output across multiple function calls, set random_state to a given integer value
+#snapml_dt = DecisionTreeRegressor(max_depth=8, random_state=45, n_jobs=4)
+
+# train a Decision Tree Regressor model using Snap ML
+#t0 = time.time()
+#snapml_dt.fit(X_train, y_train)
+#snapml_time = time.time()-t0
+#print("[Snap ML] Training time (s):  {0:.5f}".format(snapml_time))
+# Snap ML vs Scikit-Learn training speedup
+#training_speedup = sklearn_time/snapml_time
+#print('[Decision Tree Regressor] Snap ML vs. Scikit-Learn speedup : {0:.2f}x '.format(training_speedup))
+
+# run inference using the sklearn model
+#sklearn_pred = sklearn_dt.predict(X_test)
+
+# evaluate mean squared error on the test dataset
+#sklearn_mse = mean_squared_error(y_test, sklearn_pred)
+#print('[Scikit-Learn] MSE score : {0:.3f}'.format(sklearn_mse))
+
+# run inference using the Snap ML model
+#snapml_pred = snapml_dt.predict(X_test)
+
+# evaluate mean squared error on the test dataset
+#snapml_mse = mean_squared_error(y_test, snapml_pred)
+#print('[Snap ML] MSE score : {0:.3f}'.format(snapml_mse))
